@@ -46,7 +46,7 @@ public class MoviesList implements List {
 
     @Override
     public void insertIn(Movies movie, int n) {
-        if (isEmpty()) {
+        if (isEmpty() || n == 0) {
             insertFirst(movie);
         } else {
             if (this.size == n) {
@@ -55,7 +55,7 @@ public class MoviesList implements List {
                 Nodo newNodo = new Nodo(movie);
                 Nodo point = this.head;
                 int count = 0;
-                while (count < n && point.next != null) {
+                while (count < (n - 1) && point.next != null) {
                     point = point.next;
                     count++;
                 }
@@ -97,7 +97,7 @@ public class MoviesList implements List {
     @Override
     public void deleteIn(int n) {
         if (!isEmpty()) {
-            if (this.size == 1 || n == 1) {
+            if (this.size == 1 || n == 0) {
                 deleteFirst();
             } else if (this.size == n) {
                 deleteLast();
